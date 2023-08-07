@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const File1 = lazy(() => import('./app/index'));
 
-
+const RootLayout = lazy(() => import('./app/layout'));
 
 function Error404() {
   return <div>404</div>;
@@ -28,7 +28,11 @@ export function AppRoutes({ custom404: Custom404, customLoading: CustomLoading }
         <Routes>
           
           <Route 
-            element={<File1 />} 
+            element={
+              <RootLayout>
+                <File1 />
+              </RootLayout>
+            } 
             path="/" 
             key="/"  
           />
