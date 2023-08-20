@@ -12,15 +12,15 @@ export default function App() {
 
   return (
     <Fragment>
-      <h1> Repo: {data?.data.name}</h1>
+      <h1> Repo: {data?.name}</h1>
 
       <p className="read-the-docs">
-        {data?.data.description}
+        {data?.description}
       </p>
 
-      <strong>👀 {data?.data.subscribers_count}</strong>{' '}
-      <strong>✨ {data?.data.stargazers_count}</strong>{' '}
-      <strong>🍴 {data?.data.forks_count}</strong>
+      <strong>👀 {data?.subscribers_count}</strong>{' '}
+      <strong>✨ {data?.stargazers_count}</strong>{' '}
+      <strong>🍴 {data?.forks_count}</strong>
     </Fragment>
   )
 }

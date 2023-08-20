@@ -130,25 +130,17 @@ type AwaitedInput<T> = PromiseLike<T> | T;
       type Awaited<O> = O extends AwaitedInput<infer T> ? T : never;
 
 
-// eslint-disable-next-line
-  type SecondParameter<T extends (...args: any) => any> = T extends (
-  config: any,
-  args: infer P,
-) => any
-  ? P
-  : never;
-
 /**
  * @summary Get information about the "axios/axios" repository
  */
 export const getAxiosAxios = (
     
- options?: SecondParameter<typeof request>,signal?: AbortSignal
+ signal?: AbortSignal
 ) => {
       return request<Repository>(
       {url: `/axios/axios`, method: 'get', signal
     },
-      options);
+      );
     }
   
 
@@ -156,15 +148,15 @@ export const getGetAxiosAxiosQueryKey = () => [`/axios/axios`] as const;
   
 
     
-export const getGetAxiosAxiosQueryOptions = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = unknown>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, request?: SecondParameter<typeof request>}
+export const getGetAxiosAxiosQueryOptions = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = unknown>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, }
 ): UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData> & { queryKey: QueryKey } => {
-const {query: queryOptions, request: requestOptions} = options ?? {};
+const {query: queryOptions} = options ?? {};
 
   const queryKey =  queryOptions?.queryKey ?? getGetAxiosAxiosQueryKey();
 
   
   
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAxiosAxios>>> = ({ signal }) => getAxiosAxios(requestOptions, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAxiosAxios>>> = ({ signal }) => getAxiosAxios(signal);
     
       
       
@@ -177,7 +169,7 @@ export type GetAxiosAxiosQueryError = unknown
  * @summary Get information about the "axios/axios" repository
  */
 export const useGetAxiosAxios = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = unknown>(
-  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, request?: SecondParameter<typeof request>}
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
@@ -196,12 +188,12 @@ export const useGetAxiosAxios = <TData = Awaited<ReturnType<typeof getAxiosAxios
  */
 export const getTanStackQuery = (
     
- options?: SecondParameter<typeof request>,signal?: AbortSignal
+ signal?: AbortSignal
 ) => {
       return request<Repository>(
       {url: `/TanStack/query`, method: 'get', signal
     },
-      options);
+      );
     }
   
 
@@ -209,15 +201,15 @@ export const getGetTanStackQueryQueryKey = () => [`/TanStack/query`] as const;
   
 
     
-export const getGetTanStackQueryQueryOptions = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = unknown>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, request?: SecondParameter<typeof request>}
+export const getGetTanStackQueryQueryOptions = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = unknown>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, }
 ): UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData> & { queryKey: QueryKey } => {
-const {query: queryOptions, request: requestOptions} = options ?? {};
+const {query: queryOptions} = options ?? {};
 
   const queryKey =  queryOptions?.queryKey ?? getGetTanStackQueryQueryKey();
 
   
   
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof getTanStackQuery>>> = ({ signal }) => getTanStackQuery(requestOptions, signal);
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getTanStackQuery>>> = ({ signal }) => getTanStackQuery(signal);
     
       
       
@@ -230,7 +222,7 @@ export type GetTanStackQueryQueryError = unknown
  * @summary Get information about the "TanStack/query" repository
  */
 export const useGetTanStackQuery = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = unknown>(
-  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, request?: SecondParameter<typeof request>}
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
