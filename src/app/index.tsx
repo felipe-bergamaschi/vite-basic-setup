@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { useGetAxiosAxios } from '../query'
+import { useGetAxiosAxios, useGetTanStackQuery } from '../query'
 
 import '../styles/App.css'
 
