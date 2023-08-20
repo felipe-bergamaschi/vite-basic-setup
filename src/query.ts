@@ -9,6 +9,7 @@ import type {
   QueryKey
 } from '@tanstack/react-query'
 import { request } from './api/axios';
+import type { ErrorType } from './api/axios';
 export interface RepositoryLicense {
   key?: string;
   name?: string;
@@ -148,7 +149,7 @@ export const getGetAxiosAxiosQueryKey = () => [`/axios/axios`] as const;
   
 
     
-export const getGetAxiosAxiosQueryOptions = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = unknown>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, }
+export const getGetAxiosAxiosQueryOptions = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, }
 ): UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData> & { queryKey: QueryKey } => {
 const {query: queryOptions} = options ?? {};
 
@@ -163,12 +164,12 @@ const {query: queryOptions} = options ?? {};
    return  { queryKey, queryFn, ...queryOptions}}
 
 export type GetAxiosAxiosQueryResult = NonNullable<Awaited<ReturnType<typeof getAxiosAxios>>>
-export type GetAxiosAxiosQueryError = unknown
+export type GetAxiosAxiosQueryError = ErrorType<unknown>
 
 /**
  * @summary Get information about the "axios/axios" repository
  */
-export const useGetAxiosAxios = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = unknown>(
+export const useGetAxiosAxios = <TData = Awaited<ReturnType<typeof getAxiosAxios>>, TError = ErrorType<unknown>>(
   options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAxiosAxios>>, TError, TData>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
@@ -201,7 +202,7 @@ export const getGetTanStackQueryQueryKey = () => [`/TanStack/query`] as const;
   
 
     
-export const getGetTanStackQueryQueryOptions = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = unknown>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, }
+export const getGetTanStackQueryQueryOptions = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, }
 ): UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData> & { queryKey: QueryKey } => {
 const {query: queryOptions} = options ?? {};
 
@@ -216,12 +217,12 @@ const {query: queryOptions} = options ?? {};
    return  { queryKey, queryFn, ...queryOptions}}
 
 export type GetTanStackQueryQueryResult = NonNullable<Awaited<ReturnType<typeof getTanStackQuery>>>
-export type GetTanStackQueryQueryError = unknown
+export type GetTanStackQueryQueryError = ErrorType<unknown>
 
 /**
  * @summary Get information about the "TanStack/query" repository
  */
-export const useGetTanStackQuery = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = unknown>(
+export const useGetTanStackQuery = <TData = Awaited<ReturnType<typeof getTanStackQuery>>, TError = ErrorType<unknown>>(
   options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTanStackQuery>>, TError, TData>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {

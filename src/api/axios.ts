@@ -1,5 +1,4 @@
-import type { AxiosRequestConfig } from 'axios';
-import Axios from 'axios';
+import Axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { servers } from '../../swagger.json';
 
 const API_BASE_URL = servers[0].url;
@@ -11,17 +10,20 @@ export const AxiosInstance = Axios.create({
   }
 });
 
-export async function request<T = any>(
-  config: AxiosRequestConfig,
-): Promise<T> {
-  return AxiosInstance
-    .request({ ...config })
-    .then(response => response.data as T)
-    .catch((error) => {
-      if (Axios.isAxiosError(error)) {
-        throw error.response?.data;
-      }
+export function request<T>(config: AxiosRequestConfig): Promise<T> {
+  const source = Axios.CancelToken.source();
 
-      throw error;
-    });
-}
+  const promise = AxiosInstance({
+    ...config,
+    cancelToken: source.token,
+  }).then(({ data }) => data);
+
+  // @ts-ignore
+  promise.cancel = () => {
+    source.cancel('Query was cancelled');
+  };
+
+  return promise;
+};
+
+export type ErrorType<Error> = AxiosError<Error>;
