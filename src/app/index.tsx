@@ -26,6 +26,9 @@ export default function App() {
       <strong>✨ {data.stargazers_count}</strong>{' '}
       <strong>🍴 {data.forks_count}</strong>
 
+      <br />
+      <br />
+
       <button onClick={() => refetch()}>Refetch data</button>
     </Fragment>
   )
